@@ -54,4 +54,8 @@ const styles = {
     borderRadius: '5px',
     cursor: 'pointer',
     fontWeight: 'bold',
-    transition: 'all 0
+    transition: 'all 0.3s'
+  }
+}
+
+export default Hero
