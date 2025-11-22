@@ -1,180 +1,67 @@
-.newsletter {
-  padding: 100px 0;
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  color: white;
-}
+import React, { useState } from 'react';
+import './Newsletter.css';
 
-.newsletter-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-  max-width: 1000px;
-  margin: 0 auto;
-}
+const Newsletter = () => {
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
-.newsletter-text {
-  text-align: left;
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email) {
+      setIsSubscribed(true);
+      setEmail('');
+      // Reset after 3 seconds
+      setTimeout(() => setIsSubscribed(false), 3000);
+    }
+  };
 
-.newsletter-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-}
+  return (
+    <section className="newsletter">
+      <div className="container">
+        <div className="newsletter-content fade-in">
+          <div className="newsletter-text">
+            <h2 className="newsletter-title">Stay in the Loop</h2>
+            <p className="newsletter-description">
+              Subscribe to get exclusive offers, new product launches, and style tips delivered to your inbox.
+            </p>
+            
+            {!isSubscribed ? (
+              <form className="newsletter-form" onSubmit={handleSubmit}>
+                <div className="input-group">
+                  <input
+                    type="email"
+                    placeholder="Enter your email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="newsletter-input"
+                  />
+                  <button type="submit" className="subscribe-btn">
+                    Subscribe
+                  </button>
+                </div>
+                <p className="newsletter-note">
+                  No spam ever. Unsubscribe anytime.
+                </p>
+              </form>
+            ) : (
+              <div className="success-message bounce-in">
+                <span className="success-icon">🎉</span>
+                <h3>Welcome to the Family!</h3>
+                <p>Thank you for subscribing. Check your email for a special welcome offer!</p>
+              </div>
+            )}
+          </div>
+          
+          <div className="newsletter-visual">
+            <div className="floating-envelope">✉️</div>
+            <div className="floating-shoe">👟</div>
+            <div className="floating-tag">🏷️</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
-.newsletter-description {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  opacity: 0.9;
-  margin-bottom: 2.5rem;
-}
-
-.newsletter-form {
-  max-width: 400px;
-}
-
-.input-group {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.newsletter-input {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  padding: 1rem 1.5rem;
-  border-radius: 50px;
-  color: white;
-  font-size: 1rem;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-.newsletter-input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.newsletter-input:focus {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-.subscribe-btn {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.subscribe-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-}
-
-.newsletter-note {
-  font-size: 0.9rem;
-  opacity: 0.7;
-}
-
-.success-message {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20px);
-  padding: 2rem;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  text-align: center;
-  max-width: 400px;
-}
-
-.success-icon {
-  font-size: 3rem;
-  display: block;
-  margin-bottom: 1rem;
-}
-
-.success-message h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.success-message p {
-  opacity: 0.9;
-  line-height: 1.6;
-}
-
-.newsletter-visual {
-  position: relative;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.floating-envelope,
-.floating-shoe,
-.floating-tag {
-  position: absolute;
-  font-size: 4rem;
-  animation: newsletterFloat 4s ease-in-out infinite;
-}
-
-.floating-envelope {
-  top: 20%;
-  left: 20%;
-  animation-delay: 0s;
-}
-
-.floating-shoe {
-  top: 50%;
-  right: 20%;
-  animation-delay: 1.5s;
-}
-
-.floating-tag {
-  bottom: 20%;
-  left: 30%;
-  animation-delay: 3s;
-}
-
-@keyframes newsletterFloat {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-20px) rotate(10deg);
-  }
-}
-
-/* Responsive */
-@media (max-width: 968px) {
-  .newsletter-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 3rem;
-  }
-  
-  .newsletter-text {
-    text-align: center;
-  }
-  
-  .newsletter-form {
-    max-width: 100%;
-  }
-  
-  .input-group {
-    flex-direction: column;
-  }
-  
-  .subscribe-btn {
-    width: 100%;
-  }
-}
+export default Newsletter;
