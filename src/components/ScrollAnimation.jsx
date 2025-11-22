@@ -1,17 +1,27 @@
 import React, { useEffect, useRef } from 'react';
 
-const ScrollAnimation = ({ children, animation = 'fade-in', threshold = 0.1 }) => {
+const ScrollAnimation = ({ 
+  children, 
+  animation = 'fade-in', 
+  threshold = 0.1,
+  delay = 0,
+  duration = 0.8 
+}) => {
   const elementRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add(animation);
-          observer.unobserve(entry.target);
+          const element = entry.target;
+          element.style.animation = `${animation} ${duration}s ease-out ${delay}s both`;
+          observer.unobserve(element);
         }
       },
-      { threshold }
+      { 
+        threshold,
+        rootMargin: '0px 0px -50px 0px'
+      }
     );
 
     if (elementRef.current) {
@@ -23,9 +33,15 @@ const ScrollAnimation = ({ children, animation = 'fade-in', threshold = 0.1 }) =
         observer.unobserve(elementRef.current);
       }
     };
-  }, [animation, threshold]);
+  }, [animation, threshold, delay, duration]);
 
-  return React.cloneElement(children, { ref: elementRef });
+  return React.cloneElement(children, { 
+    ref: elementRef,
+    style: {
+      ...children.props.style,
+      opacity: 0
+    }
+  });
 };
 
 export default ScrollAnimation;
