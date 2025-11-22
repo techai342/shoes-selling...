@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+
+/* Section spacing */
+section {
+  padding: 80px 0;
+}
+
+/* Glass morphism utility */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur-effect);
+  -webkit-backdrop-filter: var(--blur-effect);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
