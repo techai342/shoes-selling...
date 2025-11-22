@@ -1,150 +1,103 @@
-import React from 'react'
+import React from 'react';
+import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer style={styles.footer}>
+    <footer className="footer">
       <div className="container">
-        <div style={styles.footerContent}>
-          <div style={styles.footerSection}>
-            <div style={styles.logo}>
-              <span style={styles.logoText}>ShoeStore</span>
-              <span style={styles.logoDot}>.</span>
+        <div className="footer-content">
+          {/* Brand Section */}
+          <div className="footer-section">
+            <div className="footer-logo">
+              <span className="logo-text">ShoeStore</span>
+              <span className="logo-dot">.</span>
             </div>
-            <p style={styles.footerDescription}>
-              Premium footwear for the modern lifestyle. 
-              Step into style with our exclusive collection.
+            <p className="footer-description">
+              Step into style with our premium collection of shoes. 
+              Quality, comfort, and fashion combined.
             </p>
+            <div className="social-links">
+              <a href="#" className="social-link">Instagram</a>
+              <a href="#" className="social-link">Twitter</a>
+              <a href="#" className="social-link">Facebook</a>
+              <a href="#" className="social-link">TikTok</a>
+            </div>
           </div>
           
-          <div style={styles.footerLinks}>
-            <div style={styles.linkGroup}>
-              <h4 style={styles.linkTitle}>Shop</h4>
-              <a href="#" style={styles.link}>Men's Shoes</a>
-              <a href="#" style={styles.link}>Women's Shoes</a>
-              <a href="#" style={styles.link}>New Arrivals</a>
-              <a href="#" style={styles.link}>Best Sellers</a>
+          {/* Quick Links */}
+          <div className="footer-section">
+            <h3 className="footer-title">Shop</h3>
+            <div className="footer-links">
+              <a href="#" className="footer-link">Sneakers</a>
+              <a href="#" className="footer-link">Joggers</a>
+              <a href="#" className="footer-link">Jordans</a>
+              <a href="#" className="footer-link">School Shoes</a>
+              <a href="#" className="footer-link">Formal Shoes</a>
+              <a href="#" className="footer-link">Sandals</a>
             </div>
-            
-            <div style={styles.linkGroup}>
-              <h4 style={styles.linkTitle}>Support</h4>
-              <a href="#" style={styles.link}>Contact Us</a>
-              <a href="#" style={styles.link}>Shipping Info</a>
-              <a href="#" style={styles.link}>Returns</a>
-              <a href="#" style={styles.link}>Size Guide</a>
+          </div>
+          
+          {/* Support */}
+          <div className="footer-section">
+            <h3 className="footer-title">Support</h3>
+            <div className="footer-links">
+              <a href="#" className="footer-link">Contact Us</a>
+              <a href="#" className="footer-link">Shipping Info</a>
+              <a href="#" className="footer-link">Returns</a>
+              <a href="#" className="footer-link">Size Guide</a>
+              <a href="#" className="footer-link">FAQs</a>
+              <a href="#" className="footer-link">Track Order</a>
             </div>
-            
-            <div style={styles.linkGroup}>
-              <h4 style={styles.linkTitle}>Company</h4>
-              <a href="#" style={styles.link}>About Us</a>
-              <a href="#" style={styles.link}>Careers</a>
-              <a href="#" style={styles.link}>Press</a>
-              <a href="#" style={styles.link}>Blog</a>
+          </div>
+          
+          {/* Company */}
+          <div className="footer-section">
+            <h3 className="footer-title">Company</h3>
+            <div className="footer-links">
+              <a href="#" className="footer-link">About Us</a>
+              <a href="#" className="footer-link">Careers</a>
+              <a href="#" className="footer-link">Press</a>
+              <a href="#" className="footer-link">Blog</a>
+              <a href="#" className="footer-link">Sustainability</a>
+              <a href="#" className="footer-link">Affiliate Program</a>
+            </div>
+          </div>
+          
+          {/* Contact Info */}
+          <div className="footer-section">
+            <h3 className="footer-title">Contact</h3>
+            <div className="contact-info">
+              <div className="contact-item">
+                <span className="contact-icon">📞</span>
+                <span>+1 (555) 123-4567</span>
+              </div>
+              <div className="contact-item">
+                <span className="contact-icon">✉️</span>
+                <span>hello@shoestore.com</span>
+              </div>
+              <div className="contact-item">
+                <span className="contact-icon">📍</span>
+                <span>123 Shoe Street, Fashion City</span>
+              </div>
             </div>
           </div>
         </div>
         
-        <div style={styles.footerBottom}>
-          <p style={styles.copyright}>
-            &copy; 2024 ShoeStore. All rights reserved.
-          </p>
-          <div style={styles.socialLinks}>
-            <a href="#" style={styles.socialLink}>Instagram</a>
-            <a href="#" style={styles.socialLink}>Twitter</a>
-            <a href="#" style={styles.socialLink}>Facebook</a>
+        <div className="footer-bottom">
+          <div className="footer-bottom-content">
+            <p className="copyright">
+              &copy; 2024 ShoeStore. All rights reserved.
+            </p>
+            <div className="footer-bottom-links">
+              <a href="#" className="bottom-link">Privacy Policy</a>
+              <a href="#" className="bottom-link">Terms of Service</a>
+              <a href="#" className="bottom-link">Cookie Policy</a>
+            </div>
           </div>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-const styles = {
-  footer: {
-    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    color: 'white',
-    padding: '60px 0 30px'
-  },
-  footerContent: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 2fr',
-    gap: '4rem',
-    marginBottom: '3rem'
-  },
-  footerSection: {
-    maxWidth: '300px'
-  },
-  logo: {
-    display: 'flex',
-    alignItems: 'center',
-    fontSize: '2rem',
-    fontWeight: 'bold',
-    marginBottom: '1rem'
-  },
-  logoText: {
-    color: 'white'
-  },
-  logoDot: {
-    color: '#ffd700'
-  },
-  footerDescription: {
-    opacity: '0.8',
-    lineHeight: '1.6'
-  },
-  footerLinks: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '2rem'
-  },
-  linkGroup: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '0.8rem'
-  },
-  linkTitle: {
-    fontSize: '1.1rem',
-    fontWeight: '600',
-    marginBottom: '1rem'
-  },
-  link: {
-    color: 'rgba(255, 255, 255, 0.8)',
-    textDecoration: 'none',
-    transition: 'all 0.3s ease'
-  },
-  footerBottom: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingTop: '2rem',
-    borderTop: '1px solid rgba(255, 255, 255, 0.2)'
-  },
-  copyright: {
-    opacity: '0.8'
-  },
-  socialLinks: {
-    display: 'flex',
-    gap: '2rem'
-  },
-  socialLink: {
-    color: 'rgba(255, 255, 255, 0.8)',
-    textDecoration: 'none',
-    transition: 'all 0.3s ease'
-  }
-}
-
-// Hover effects
-styles.link = {
-  ...styles.link,
-  ':hover': {
-    color: 'white',
-    transform: 'translateX(5px)'
-  }
-}
-
-styles.socialLink = {
-  ...styles.socialLink,
-  ':hover': {
-    color: 'white'
-  }
-}
-
-export default Footer
+export default Footer;
